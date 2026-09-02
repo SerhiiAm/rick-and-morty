@@ -353,3 +353,8 @@ poetry.toml
 pyrightconfig.json
 
 # End of https://www.toptal.com/developers/gitignore/api/python,django,pycharm+all
+# Celery Beat database files
+celerybeat-schedule*
+
+# Local SQLite database
+*.sqlite3

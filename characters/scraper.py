@@ -28,9 +28,13 @@ def scraper_character() -> list[Character]:
     return characters
 
 
-def save_characters(characters: list[Character]):
-    for character in characters:
-        character.save()
+def save_characters(characters: list[Character]) -> None:
+    Character.objects.bulk_create(
+        characters,
+        update_conflicts=True,
+        unique_fields=["api_id"],
+        update_fields=["name", "status", "species", "gender", "image"],
+    )
 
 
 def sync_characters_with_api() -> None:
